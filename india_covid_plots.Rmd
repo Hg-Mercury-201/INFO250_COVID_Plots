@@ -1,0 +1,219 @@
+---
+title: "INFO250 Final Project"
+output: html_document
+knit: (function(input_file, encoding){
+  out_dir <- 'docs';
+  rmarkdown::render(input_file,
+  encoding=encoding,
+  output_file=file.path(dirname(input_file), out_dir, 'index.html'))})
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r covid, echo=FALSE, message=FALSE}
+require(gplots)
+
+df = as.matrix(read.csv("covid19_india_stats.csv", sep=",", row.names=1))
+
+heatmap.2(df
+          ,scale="column"
+          ,col=heat.colors(256)
+          ,main="Most Affected States"
+          ,Rowv=NA
+          ,Colv=NA
+          ,xlab="COVID Statistics"
+          ,ylab="State"
+          ,margins = c(11,12)
+          ,dendrogram = "none"
+          ,trace="none")
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r barchart_cases, echo=FALSE}
+df = as.matrix(read.csv("IndiaCOVIDcases.csv", sep=",", row.names=1))
+
+barplot(df,
+        xlab="States",
+        ylab="COVID Cases",
+        main="Cases per State",)
+```
+
+```{r barchart_deaths, echo=FALSE}
+df= as.matrix(read.csv("IndiaCOVIDdeaths.csv", sep = ",", row.names = 1))
+
+barplot(df,
+        xlab="States",
+        ylab="COVID Deaths",
+        main="Deaths per State",)
+```
+
+```{r multi_barchart, echo=FALSE}
+df = as.matrix(read.csv("LatestINDIA.csv", sep=",", row.names=1))
+
+Total_Cases=c(7549
+      ,1995669
+       ,51655
+       ,581398
+       ,725518
+       ,62035
+       ,1003870
+       ,10657
+       ,1437156
+       ,172683
+       ,825213
+       ,770245
+       ,210719
+       ,323582
+       ,347635
+       ,2931827
+       ,3724030
+       ,20466
+       ,10295
+       ,792054
+       ,6401213
+       ,108948
+       ,72412
+       ,49950
+       ,29274
+       ,996153
+       ,122391
+       ,600008
+       ,953960
+       ,28830
+       ,2592436
+       ,653202
+       ,81584
+       ,1708991
+       ,342637
+       ,1539612
+)
+Active=c(1
+       ,16341
+       ,1763
+       ,8772
+       ,204
+       ,42
+       ,1037
+       ,4
+       ,471
+       ,884
+       ,179
+       ,660
+       ,2705
+       ,1158
+       ,217
+       ,21507
+       ,175695
+       ,81
+       ,34
+       ,95
+       ,64790
+       ,5721
+       ,3591
+       ,9084
+       ,1088
+       ,8661
+       ,856
+       ,543
+       ,163
+       ,1982
+       ,20225
+       ,6939
+       ,1436
+       ,420
+       ,330
+       ,9736
+)
+
+
+Discharge=c(7419
+            ,1965657
+            ,49640
+            ,567113
+            ,715665
+            ,61182
+            ,989284
+            ,10649
+            ,1411612
+            ,168622
+            ,814956
+            ,759924
+            ,204457
+            ,318025
+            ,342286
+            ,2873281
+            ,3529465
+            ,20178
+            ,10210
+            ,781444
+            ,6201168
+            ,101505
+            ,67581
+            ,40681
+            ,27579
+            ,980471
+            ,119730
+            ,583120
+            ,944843
+            ,26485
+            ,2537632
+            ,642416
+            ,79366
+            ,1685785
+            ,334934
+            ,1511558
+)
+
+Deaths=c(129
+         ,13671
+         ,252
+         ,5513
+         ,9649
+         ,811
+         ,13549
+         ,4
+         ,25073
+         ,3177
+         ,10078
+         ,9661
+         ,3557
+         ,4399
+         ,5132
+         ,37039
+         ,18870
+         ,207
+         ,51
+         ,10515
+         ,135255
+         ,1722
+         ,1240
+         ,185
+         ,607
+         ,7021
+         ,1805
+         ,16345
+         ,8954
+         ,363
+         ,34579
+         ,3847
+         ,782
+         ,22786
+         ,7373
+         ,18318
+)
+
+COVID_data=cbind(Total_Cases, Active, Discharge,Deaths)
+barplot(COVID_data,beside=T,xlab="States",ylab="COVID Stats",main="Data of Each State")
+```
+

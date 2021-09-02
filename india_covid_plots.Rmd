@@ -226,3 +226,8 @@ COVID_data=cbind(Total_Cases, Active, Discharge,Deaths)
 barplot(COVID_data,beside=T,xlab="States",ylab="COVID Stats",main="Data of Each State")
 ```
 
+This chart shows different cases in every state of India. Each set shows the stats for the certain case in each state. The x-axis represents the different sets of cases, each set has multiple bars that represent the states in India. The y-axis represents the COVID Stats for those cases. Each bar in a set is a different shade of grey, with each one representing a different state. The same shade of grey in the four sets would represent the same state but a different case. 
+
+According to the graph, overall, the number of discharge cases are more than the active cases and death cases. For instance, the state with the least active cases has a total number of 1 cases and the state with the least death cases has a total number of 4, while the state with the least number of discharge cases has a total number of 7,419 cases. The state with the most active cases has a total number of 175,695 cases and the state with the most death cases has a total of 135255 cases, while the state with the highest discharge cases has a total of 6,201,168 cases. 
+
+

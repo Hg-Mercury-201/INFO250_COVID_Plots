@@ -1,5 +1,5 @@
 ---
-title: "INFO250 Final Project"
+title: "INFO250 Final Project - COVID 19 India"
 output: html_document
 knit: (function(input_file, encoding){
   out_dir <- 'docs';
@@ -12,11 +12,13 @@ knit: (function(input_file, encoding){
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## R Markdown
+## INFO 250: Final Project
+By: Nathan Beebe, Surya Ramanathan, Asma Khatut
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+In the 2021 COVID 19 pandemic, it is important to understand how regions have been affected by the region.  Data visualization is an important tool that allow us to quickly communicate how the different regions of India have been affected as of August 2021.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+# Heatmap
 
 ```{r covid, echo=FALSE, message=FALSE}
 require(gplots)
@@ -36,9 +38,10 @@ heatmap.2(df
           ,trace="none")
 ```
 
-## Including Plots
+The heatmap of the dataset featuring all the Indian states gives users an idea of where the most activity is regarding Covid cases.  The left side of the heat map shows which states are the most active with Covid, and the right side of the heat map.
+The states with the heaviest COVID activity seem to fall in the states Kerala.  It has the hottest colors on the heatmap.  Karnataka seems to be the second most active COVID region in India from this dataset.  They both have high amounts of active cases.  Throughout the whole heatmap it is hard to differentiate between most of the states due to the similar trends found in the data set.
 
-You can also embed plots, for example:
+# Barchart
 
 ```{r barchart_cases, echo=FALSE}
 df = as.matrix(read.csv("IndiaCOVIDcases.csv", sep=",", row.names=1))
@@ -49,6 +52,8 @@ barplot(df,
         main="Cases per State",)
 ```
 
+This barchart showcases the total number of cases per state. Each bar that is in a shade of gray on the X-axis represents each Indian state. Then the numerical count of the COVID-19 cases is measured on the Y-axis. According to the data, 20 of the 36 states are in the range of having 7500-650000 cases. Another 8 states had about 650000-1300000 cases. The next 3 more were nearing 2000000. Then the remaining 5 states were in the range of having around 2000000-6500000.
+
 ```{r barchart_deaths, echo=FALSE}
 df= as.matrix(read.csv("IndiaCOVIDdeaths.csv", sep = ",", row.names = 1))
 
@@ -57,6 +62,10 @@ barplot(df,
         ylab="COVID Deaths",
         main="Deaths per State",)
 ```
+
+The second barchart shows us the death count for every state in India. Each bar that is in a shade of gray on the X-axis represents each Indian state. Then the Y-axis shows the number of deaths for each state. According to the data, it seems that the fewer number of states have higher totals for the death count. For instance, out of the 35 states in India, 27 of them have up to 13000+ deaths. Another 6 had between 13000-27000 deaths. The last 3 had up to 27000-41000 deaths. Then the last state had over 130000 deaths.
+
+# Multi-set Barchart
 
 ```{r multi_barchart, echo=FALSE}
 df = as.matrix(read.csv("LatestINDIA.csv", sep=",", row.names=1))
